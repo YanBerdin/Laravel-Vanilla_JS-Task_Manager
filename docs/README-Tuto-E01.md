@@ -29,9 +29,13 @@ Les points qui nous intéressent pour le moment sont :
 
 ## Création d’une bdd de test
 
+##  =>  WARNING
+##  =>  Class/Model Au SINGULIER = nom de la Table aU PLURIEL 
+
 On crée une base de données `moviedb` avec un utilisateur spécifique.
 
 On ajoute une table `movies` dans laquelle on insère la trilogie des "Tuche".
+Convention => NomdelaTable au PLURIEL
 
 ```sql
 CREATE DATABASE `moviedb`;
@@ -50,6 +54,8 @@ INSERT INTO `movies` (`title`)
 VALUES ('Les tuche'), ('Les tuche 2'), ('Les tuche 3');
 ```
 > Laravel est un framework. Par conséquent il attend un standard au niveau de la base de donnée (on verra plus précisemment 😶‍🌫️)
+> => NomduModel (au singulier)
+> => NomdelaTables au pluriel
 
 ## Configuration et lancement
 
@@ -64,19 +70,33 @@ DB_PASSWORD=test
 Il ne nous reste déjà plus qu'à lancer le serveur ! :rocket:
 
 ```bash
-php artisan serve
+
+  php artisan serve
+
 ```
 
 Cette commande est le raccourci pour lancer le serveur PHP comme vu dans les saisons précédentes : `php -S 127.0.0.1:8000 server.php`
 
 ⇒ Maintenant on vérifie le fonctionnement : [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
+⇒  => => Verifier si port 8000 ou 8001 ou 8002 ou 8003 ...
+
 ## Codons !
 
-**Création d’une route web de test dans le fichier `web.php` :**
+**Création d’une route web de test dans le fichier `web.php` (=> QUE Test) :**
 
 ```php
-Route::get('/test', function () {
+
+// TODO
+// Route Test : 
+//? Une route, c'est quoi ?
+// - un chemin
+// - (optionnel) un nom unique
+// - un verbe HTTP (GET, POST, PUT, DELETE...)
+// - un truc à afficher via par exemple : une méthode de controleur
+//     Ou ci dessous : un callback sous forme de fonction anonyme
+
+Route::get('/test', function () {  //  <=   <=  FONCTION ANONYME = CALL BACK
     return 'Bienvenue sur ma future API de test !';
 });
 ```
@@ -87,7 +107,7 @@ Route::get('/test', function () {
 
 Il existe 3 différences entre web et api :
 
-1. `api` est configuré par défaut avec une limite d’appel (60 requêtes par minute)
+1. `api` est configuré par défaut avec une limite d’appel (60 requêtes par minute)    => Sécurité => Parade aux attaques DDOS
 2. Le “middleware group” est soit `api` soit `web`
 
     Les “middleware” permettent de filtrer les requêtes en entrée et les réponses en sortie ; pour [en savoir plus](https://www.conciergerie.dev/blog/laravel-les-middlewares)
@@ -107,10 +127,27 @@ Dans Laravel, on copie la formule du MVC et on va faire ces étapes :
 
 ```php
 
-//  Dans dossier routes  =>  fichier web.php
-//  Déclarer la route :
+//  =>  Dans dossier routes > fichier api.php ( web.php c'est QUE pour le test )
+//      => Déclarer la route :
 
+use Illuminate\Http\Request; // <= <= <= deja en place
+use Illuminate\Support\Facades\Route; // <= <= <= deja en place
+//! =>   Penser à 'USE' le Controller Utilisé
 use App\Http\Controllers\MovieController;
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+//      <= <= <=      deja en place      =>   =>   =>  
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 // Route de récupération des films
 // Type : get
@@ -123,11 +160,15 @@ Route::get('/movies', [MovieController::class, 'list']);
 **Création d’un contrôleur**
 
 ```php
+//   Dans dossier app > http > Controllers 
+//        => créer MovieController.php
+
 namespace App\Http\Controllers;
+//! attention le fichier doit avoir le même nom que la classe qu'il définit
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
-
+//! =>   Penser à 'USE' le Controller Utilisé
 class MovieController extends Controller
 {
     // Création de la méthode list
@@ -144,12 +185,18 @@ class MovieController extends Controller
 **Création d’une classe Model**
 
 ```php
-namespace App\Models;
+// TODO => Dans app > Models   => Créer le Model Movie.php
 
-use Illuminate\Database\Eloquent\Model;
+//!  => Déclarer la Classe vide mais héritant des capacités de 'Model'
+//!  => 'extends' au Model 'Model' implémenté par l'ORM 'Eloquent'
 
-// Création de la classe Movie héritant de toutes les capacités de Model
-class Movie extends Model {}
+namespace App\Models;       // <=  Déjà implémenté par Laravel
+
+use Illuminate\Database\Eloquent\Model; // <=  Déjà implémenté par l'ORM Eloquent
+
+// TODO => Déclaration de la classe Task (vide et extends à Model)
+class Task extends Model {}
+
 ```
 
 **Tests avec le navigateur**
