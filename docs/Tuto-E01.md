@@ -27,10 +27,10 @@ Les points qui nous intéressent pour le moment sont :
 🥳 Ca ressemble vachement au MVC !
 </aside>
 
-## Création d’une bdd de test
+## Création d’une BDD de test
 
-##  =>  WARNING
-##  =>  Class/Model Au SINGULIER = nom de la Table aU PLURIEL 
+###  ->  ATTENTION
+###  ->  Class/Model Au SINGULIER = nom de la Table aU PLURIEL 
 
 On crée une base de données `moviedb` avec un utilisateur spécifique.
 
@@ -86,8 +86,8 @@ Cette commande est le raccourci pour lancer le serveur PHP comme vu dans les sai
 **Création d’une route web de test dans le fichier `web.php` (=> QUE Test) :**
 
 ```php
+// TODO  Dans dossier routes  > web.php  ( => c'est QUE pour le test )
 
-// TODO
 // Route Test : 
 //? Une route, c'est quoi ?
 // - un chemin
@@ -123,12 +123,14 @@ Dans Laravel, on copie la formule du MVC et on va faire ces étapes :
 
 ### :one: La liste des films
 
-**Ajout de la route**
+**Ajout de la route (endpoint)**
 
 ```php
 
-//  =>  Dans dossier routes > fichier api.php ( web.php c'est QUE pour le test )
-//      => Déclarer la route :
+// TODO  Dans dossier routes  >  api.php (web.php c'etait QUE pour le test)
+
+//  Déclarer la route :
+//      =>    exemple :  use App\Http\Controllers\MovieController;
 
 use Illuminate\Http\Request; // <= <= <= deja en place
 use Illuminate\Support\Facades\Route; // <= <= <= deja en place
@@ -160,16 +162,18 @@ Route::get('/movies', [MovieController::class, 'list']);
 **Création d’un contrôleur**
 
 ```php
-//   Dans dossier app > http > Controllers 
-//        => créer MovieController.php
-
-namespace App\Http\Controllers;
+// TODO Dans dossier app > http > Controllers
+//     => créer MovieController.php
 //! attention le fichier doit avoir le même nom que la classe qu'il définit
 
+
+namespace App\Http\Controllers;
+
 use App\Models\Movie;
-use Illuminate\Http\Request;
-//! =>   Penser à 'USE' le Controller Utilisé
-class MovieController extends Controller
+//! =>   Penser à 'USE' le Model Utilisé
+
+use Illuminate\Http\Request; // <=  Déjà implémenté par Eloquent
+class MovieController extends Controller // => Controller implémenté par Eloquent'
 {
     // Création de la méthode list
     public function list ()
@@ -190,9 +194,9 @@ class MovieController extends Controller
 //!  => Déclarer la Classe vide mais héritant des capacités de 'Model'
 //!  => 'extends' au Model 'Model' implémenté par l'ORM 'Eloquent'
 
-namespace App\Models;       // <=  Déjà implémenté par Laravel
+namespace App\Models;       // <=  Déjà implémenté par l'ORM Eloquent
 
-use Illuminate\Database\Eloquent\Model; // <=  Déjà implémenté par l'ORM Eloquent
+use Illuminate\Database\Eloquent\Model; // <=  Déjà implémenté Eloquent
 
 // TODO => Déclaration de la classe Task (vide et extends à Model)
 class Task extends Model {}
@@ -205,10 +209,14 @@ Direction [http://127.0.0.1:8000/api/movies](http://127.0.0.1:8000/api/movies)
 
 **Tests du barbu 🥸**
 
-Utiliser l'extension VSCode "Rest Client" et créer un fichier `list.http`
-
+Utiliser l'extension VSCode "Rest Client" et créer un fichier `list.http` à la racine => dossier backend
+Coller dedans la ligne ci-dessous
 ```
 GET http://127.0.0.1:8000/api/movies HTTP/1.1
+```
+ou selon port ouvert
+```
+GET http://127.0.0.1:8002/api/movies HTTP/1.1
 ```
 
 ### :two: Un film en particulier
