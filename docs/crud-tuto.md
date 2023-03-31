@@ -84,7 +84,9 @@ public function create(Request $request) {
         }
 }
 </code></pre>
-                                    Attention !
+                                 Attention  ERROR 500 !!!
+
+
 
  Notre table `movies` ne remplit pas les contraintes exigées par Laravel :
 <a href="https://laravel.com/docs/8.x/eloquent#timestamps">https://laravel.com/docs/8.x/eloquent#timestamps</a>
@@ -94,6 +96,43 @@ La table ne contient pas de champ `created_at` ni `updated_at`, il faut donc le 
 
     // Take care of timestamps, created_at et updated_at are not presents
     public $timestamps = false;
+}
+</code></pre>
+<pre><code class="php">Autre option utiliser Validator() 
+exemple avec create()
+
+    public function create(Request $request) {
+
+        // Dans la variable $validator, je mets le résultat d'une vérification de l'input title
+        // Avec la Façade (outil de Laravel) Validator, je vérifie que :
+            // - title existe bien : required
+            // - title n'est pas vide : filled
+        $validator = Validator::make($request->input(), [
+            'title' => ['required', 'filled']
+        ]);
+
+        // On vérifie si la validation a raté
+        if ($validator->fails()) {
+
+            // si oui, on renvoie un code HTTP 422, avec un message d'erreur
+
+            return response()->json($validator->errors(), 422);
+        }                  <=  <=  <=  // (Fin de la partie Validator())
+
+        $title = $request->input('title');
+
+        $task = new Task();
+        $task->title = $title;
+
+        if ($task->save()) {
+            return response()->json($task, 201);
+        } else {
+            return response(null, 500);
+        }
+    }
+
+    public function update($id, Request $request)
+    {
 }
 </code></pre>
 &nbsp;

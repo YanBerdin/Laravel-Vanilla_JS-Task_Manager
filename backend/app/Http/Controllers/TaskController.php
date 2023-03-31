@@ -62,15 +62,16 @@ class TaskController extends Controller
         }
     }
 
-        //Ne sera exécutée que si l'url http://127.0.0.1:8000/api/tasks/$id en méthode PUT est appelée
-        public function update(Request $request, $id) {
-            // On recherche avec l'id
-            $task= Task::find($id);
-            // Si on n'a rien, on ne peut pas faire de mise à jour
-            // 404 : not found
-            if (!$task) {
-                return response(null, 404);
-            }
+    //Ne sera exécutée que si l'url http://127.0.0.1:8000/api/tasks/$id en méthode PUT est appelée
+    public function update(Request $request, $id)
+    {
+        // On recherche avec l'id
+        $task = Task::find($id);
+        // Si on n'a rien, on ne peut pas faire de mise à jour
+        // 404 : not found
+        if (!$task) {
+            return response(null, 404);
+        }
 
         // Extraction des valeurs passées de la body de la requête
         $title = $request->input('title');
@@ -86,12 +87,13 @@ class TaskController extends Controller
         }
     }
     //Ne sera exécutée que si l'url http://127.0.0.1:8000/api/tasks/$id en méthode DELETE est appelée
-    public function delete($id) {
+    public function delete($id)
+    {
         // On recherche avec l'id
-        $task= Task::find($id);
+        $task = Task::find($id);
         // Si on n'a rien, on ne peut pas faire de suppression
         if (!$task) {
-            return response(null, 404);// 404 : not found
+            return response(null, 404); // 404 : not found
         }
 
         // On supprime puis on gère la réponse avec le code HTTP qui convient
@@ -100,7 +102,5 @@ class TaskController extends Controller
         } else {
             return response(null, 500); // 500 : Internal Server Error
         }
+    }
 }
-
-}
-
