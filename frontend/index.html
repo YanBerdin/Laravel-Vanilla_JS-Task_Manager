@@ -6,6 +6,8 @@
   <title>Task manager</title>
   <meta name="description" content="Un gestionnaire de tâches, pour vous aider au quotidien">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Relier fichier app.js -->
+  <script src="js/app.js" defer></script>
 </head>
 <body>
   
@@ -50,7 +52,7 @@
         <label for="task-title" class="screen-reader-only">titre de la tâche</label>
         <input name= "id" id="task-id" type="hidden">
         <input name= "title" id="task-title" placeholder="titre de la tâche..." type="text" required>
-        <button>ajouter</button>
+        <button type="submit">ajouter</button>
       </form>
     </div>
 
