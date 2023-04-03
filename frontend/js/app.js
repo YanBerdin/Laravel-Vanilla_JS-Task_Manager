@@ -2,10 +2,9 @@ console.log("Yo app.js");
 
 //TODO adresse pour navigateur => http://localhost:8080/
 
-
 /**
  * Charge la liste de toutes les Tasks depuis l'API Task
- * @return {array}
+ * @return {array} taskList
  */
 async function getTasks() {
   console.log("Chargement de la liste des tâches");
@@ -58,42 +57,43 @@ async function handleLoadTasks(event) {
   event.preventDefault(); // on empêche le formulaire de se soumettre
 
   // On vide la liste des Tasks sur la page
-  document.querySelector(".tasklist li > p").textContent = "";
+  // document.querySelector(".tasklist li > p").textContent = "";
 
   // On récupère la liste des Tasks au format JSON
   const tasks = await getTasks(); //! <=  Mise en 'async' de la requete pour que le reste continue de s'executer
 
-console.log(tasks);
-
   // On boucle sur la liste des pays pour les insérer dans la page
   for (const task of tasks) {
     insertTaskInDom(task);
+    console.log(tasks);
   }
 }
 
 /**
- * Insérer une task dans la page
- *
+ * Insérer une task dans la page 
+ * 
  * @param {Object} task
  */
 function insertTaskInDom(task) {
   //!  <=  <= Methode qui affiche les données sur le DOM
-  // On cible un <p>
-  const taskElement = document.querySelector(".tasklist li > p");
-  //   console.log(taskElement);
+  // On crée un <p>
+  const titleElement = document.createElement("p");
+  console.log(titleElement);
 
-  // On écrit le nom de la Task dans ce <p>
-  taskElement.textContent = tasksList.title;
+  // On écrit le nom du pays dans ce <span>
+  titleElement.textContent = task.title;
 
-console.log(task);
+  console.log(titleElement);
+
+  // On insère le <p> dans le <li>
+  //  taskElement.append(titleElement);
+
+  //  const taskElement = document.createElement(".tasklist li");
+
+  // console.log(task);
 
   // On insère le titre dans le <p>
-//   taskElement.append(titleElement);
-
-
-
-
-
+  //   taskElement.append(titleElement);
 }
 
 getTasks();
