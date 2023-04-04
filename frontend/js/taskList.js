@@ -1,8 +1,16 @@
 console.log("Yo taskList.js");
 //TODO INFO : adresse pour navigateur => http://localhost:8080/
 
+// Plan d'action : 
+// - on attend que le DOM soit complètement chargé
+// - on envoie une requête à l'API REST pour récupérer la liste des tâches
+// - si la réponse est ok, alors, on convertit le json en tableau d'objets JS
+// - on boucle sur le tableau pour créer des <li>, puis les insérer dans le <ul>
+
+
 /**
  * Charge la liste de toutes les Tasks depuis l'API Task
+ * Va chercher la liste des tâches via l'API REST
  * @return {array} taskList
  */
 async function getTasks() {
@@ -28,7 +36,7 @@ async function getTasks() {
   // TODO On veut extraire les données qui nous sont nécessaire : le titre des taches
 
   // On crée un tableau vide pour stocker les pays à afficher
-  const tasksList = [];
+  let tasksList = []; // (Déclaré par erreur au début avec const)
 
   //! Pour chaque objet du tableau récupéré depuis l'API restcountries...
   for (const taskFromAPI of data) {
