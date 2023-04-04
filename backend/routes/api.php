@@ -82,4 +82,4 @@ Route::put('/tasks/{id}', [TaskController::class, 'update']);
 Route::delete('/tasks/{id}', [TaskController::class, 'delete'])->where('id', '[0-9]+');
 
 // 'id','[0-9]+'
-//!  => $id  ne peut etre composé que de au minimum 1 caractere composéé de chiffre de 0 à 9 inclus
+//!  => $id  ne peut etre composé que de au minimum 1 caractere composé de chiffre de 0 à 9 inclus
