@@ -104,6 +104,9 @@ function insertTaskInDom(data) {
   // Inserer la classe 'delete'
   divDeleteElement.classList.add("delete");
   //console.log(divDeleteElement);
+// TODO  je place l'écouteur d'événement click (Atelier E05)
+divDeleteElement.addEventListener('click', handleDeleteTask);
+
 
   // Inserer la div dans le <li>
   liElement.append(divDeleteElement);
@@ -154,3 +157,24 @@ async function displayTasks() {
     insertTaskInDom(task);
   }
 }
+
+
+
+
+
+
+
+
+
+
+// async function removeTaskFromDom() {
+//     //!  <=  <= Methode qui affiche les données sur le DOM
+//     addEvents:  function() {
+//         // on sélectionne les boutons delete
+//     const deleteButtons = document.querySelectorAll("delete");
+// console.log(deleteButtons);
+//         // lorsqu'on click sur le bouton delete
+//         // on lance la méthode handleClickDeleteButton
+//     deleteButtons.addEventListener('click', slider.handleClickDeleteButton);
+// }
+// }

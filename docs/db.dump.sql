@@ -27,3 +27,34 @@ INSERT INTO `tasks` (`id`, `title`, `created_at`, `updated_at`) VALUES
 (1, 'Acheter une salade', '2022-08-21 19:13:59', '2022-08-21 19:13:59'),
 (2, 'Manger la salade', '2022-08-21 19:14:18', '2022-08-21 19:14:18'),
 (3, 'Laver son assiette', '2022-08-21 19:14:33', '2022-08-21 19:14:33');
+
+
+/* Ajout des deux tables categories et tags */;
+-- Adminer 4.7.6 MySQL dump
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+SET NAMES utf8mb4;
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'L''identifiant de notre catégorie',
+  `name` varchar(64) NOT NULL COMMENT 'Le nom de la catégorie',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT 1 COMMENT 'Le statut de la catégorie (1=active, 2=désactivée)',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'La date de création de la catégorie',
+  `updated_at` timestamp NULL DEFAULT NULL COMMENT 'La date de la dernière mise à jour de la catégorie',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
