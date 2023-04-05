@@ -1,9 +1,8 @@
 <?php
 
-// TODO Dans dossier app > http > Controllers
-//     => créer MovieController.php
+//? Dans dossier app > http > Controllers
+//?     => créer MovieController.php
 //! attention le fichier doit avoir le même nom que la classe qu'il définit
-
 
 // class MovieController extends Controller
 //{
@@ -20,11 +19,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
-//! =>   Penser à 'USE' le Model Utilisé
+//TODO =>   Penser à 'USE' le Model Utilisé
 use Illuminate\Http\Request;
+//! Implémentation de VALIDATOR => Dans create() et update() => S07E06
+use Illuminate\Support\Facades\Validator;
 
+//TODO  => 'extends' 'Controller' implémenté par 'Eloquent' héritant de ses méthodes
 class TaskController extends Controller
-//!  => 'extends' 'Controller' implémenté par 'Eloquent' héritant de ses méthodes
 {
     // Création de la méthode list
     public function list()
@@ -46,7 +47,20 @@ class TaskController extends Controller
     // Ne sera exécutée que si l'url http://127.0.0.1:8000/tasks en méthode POST est appelée
     public function create(Request $request)
     {
+        //! Dans la variable $validator, je mets le résultat d'une vérification de l'input title
+        //! Avec la Façade (outil de Laravel) Validator, je vérifie que :
+        //! - title existe bien : required
+        //! - title n'est pas vide : filled
+        $validator = Validator::make($request->input(), [
+            'title' => ['required', 'filled']
+        ]);
 
+        // On vérifie si la validation a raté
+        if ($validator->fails()) {
+            // si oui, on renvoie un code HTTP 422, avec un message d'erreur
+            return response()->json($validator->errors(), 422);
+        }
+        //! Segment VALIDATOR ligne 50 à 63 => S07E06
         // Extraction des valeurs passées de la body de la requête
         $title = $request->input('title');
 
@@ -72,6 +86,21 @@ class TaskController extends Controller
         if (!$task) {
             return response(null, 404);
         }
+
+        //! Dans la variable $validator, je mets le résultat d'une vérification de l'input title
+        //! Avec la Façade (outil de Laravel) Validator, je vérifie que :
+        //! - title existe bien : required
+        //! - title n'est pas vide : filled
+        $validator = Validator::make($request->input(), [
+            'title' => ['required', 'filled']
+        ]);
+
+        // On vérifie si la validation a raté
+        if ($validator->fails()) {
+            // si oui, on renvoie un code HTTP 422, avec un message d'erreur
+            return response()->json($validator->errors(), 422);
+        }
+        //! Segment VALIDATOR ligne 90 à 103  => S07E06
 
         // Extraction des valeurs passées de la body de la requête
         $title = $request->input('title');
