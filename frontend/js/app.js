@@ -10,6 +10,7 @@ async function initApp() {
   //debugger;
   console.log("Yo app.js");
   displayTasks();
+  displayCategories();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

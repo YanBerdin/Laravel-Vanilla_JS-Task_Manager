@@ -4,29 +4,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
+use App\Models\Category;
 
-class TaskController extends Controller
+class CategoryController extends Controller
 {
     // Création de la méthode list
     public function list ()
     {
         // Utilisation de la méthode all() grâce à l'héritage
-        $tasks = Task::all();
+        $categories = Category::all();
         // Retour automatique au format JSON 👌
-        return $tasks;
+        return $categories;
     }
 
     // Création de la méthode show($id)
     public function show($id)
     {
         // Utilisation de la méthode find($id) grâce à l'héritage
-        $task = Task::find($id);
+        $category = Category::find($id);
 
-        if (!$task) {
+        if (!$category) {
             return response(null, 404);// 404 : not found
         }
         // Retour auto au format JSON
-        return $task;
+        return $category;
     }
 }

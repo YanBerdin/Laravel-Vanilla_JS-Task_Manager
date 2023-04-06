@@ -92,16 +92,26 @@ Route::delete('/tasks/{id}', [TaskController::class, 'delete'])->where('id', '[0
 //TODO | `/api/categories` | GET | - | Get all categories details | - |
 Route::get('/categories', [CategoryController::class, 'list']);
 
+
 //? Route pour afficher une categorie selon son id dans la table categories
 //TODO | `/api/categories/[id]` | GET | - | Get a single category details | `id` - ID of the category to show |
 Route::get('/categories/{id}', [CategoryController::class, 'show'])->where('id', '[0-9]+');
 
+//TODO | `/api/categories`      | POST | `title` | Create a new category | - |
+// Route::post('/categories', [CategoryController::class, 'create']);
+
+
 //! Routes tags ============================================================
 
-//? Route pour afficher la liste toutes les categories dans la table categories
+//? Route pour afficher la liste tout les tags dans la table tags
 //TODO | `/api/tags` | GET | - | Get all tags details | - |
 Route::get('/tags', [TagController::class, 'list']);
 
-//? Route pour afficher une categorie selon son id dans la table categories
+
+
+//? Route pour afficher un tag selon son id dans la table tags
 //TODO | `/api/tags/[id]` | GET | - | Get a single tag details | `id` - ID of the tag to show |
 Route::get('/tags/{id}', [TagController::class, 'show'])->where('id', '[0-9]+');
+
+//TODO | `/api/tags`      | POST | `title` | Create a new tag | - |
+// Route::post('/tags', [TagController::class, 'create']);
