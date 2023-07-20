@@ -50,7 +50,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Chemin : http://127.0.0.1:8000/tasks/{id}
 // Controller : TaskController
 //? Méthode : show
-
  Route::get('/tasks/{id}', [TaskController::class, 'show'])->where('id', '[0-9]+');
 
 
@@ -60,7 +59,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Methode HTTP : POST
 // Controller : TaskController
 //? Méthode : create
-
 Route::post('/tasks', [TaskController::class, 'create']);
 
 //! Route pour Update une tâche parmis la liste
@@ -69,7 +67,6 @@ Route::post('/tasks', [TaskController::class, 'create']);
 // Methode HTTP : PUT
 // Controller : TaskController
 //? Méthode : update
-
 Route::put('/tasks/{id}', [TaskController::class, 'update'])->where('id', '[0-9]+');;
 //? Attention de ne pas oublier de préciser: ->where('id', '[0-9]+');
 
@@ -83,7 +80,7 @@ Route::put('/tasks/{id}', [TaskController::class, 'update'])->where('id', '[0-9]
 Route::delete('/tasks/{id}', [TaskController::class, 'delete'])->where('id', '[0-9]+');
 
 // 'id','[0-9]+'
-//?  => $id  ne peut etre composé que de au minimum 1 caractere composé de chiffre de 0 à 9 inclus
+//! INFO  => $id  ne peut etre composé que de au minimum 1 caractere composé de chiffre de 0 à 9 inclus
 
 //! Routes categories ============================================================
 

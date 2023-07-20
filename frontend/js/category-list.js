@@ -60,12 +60,6 @@ async function getCategories() {
  // console.log(categoriesList);
 
  //! PAS BESOIN !! de : event.preventDefault();  => pas de formulaire !
-/**
- * Fonction appelée lors de la soumission du formulaire
- */
-// async function handleLoadTasks(event) {
-//     console.log("Chargement de handleLoadTasks(event)");
-// On empêche la page de se recharger
 
 // TODO On veut une fonction qui nous créer le DOM pour afficher UNE tâche !
 /*
@@ -84,7 +78,7 @@ async function getCategories() {
 function insertCategoryInDom(data) {
     //!  <=  <= Methode qui affiche les données sur le DOM
   
-    // Créer un <li>
+    // Créer un <em>
     const emElement = document.createElement("em");
   
     // Recuperer et Inserer le nom category dans le <em>
@@ -136,26 +130,26 @@ function insertCategoryInDom(data) {
   
 //   /**
 //    * supprime tout le DOM dans le <ul>
-//    * exécute getAllTasksFromApi()
+//    * exécute getAllCategoriessFromApi()
 //    * boucle sur le résultat de la fonction getAllTasksFromApi()
 //    * à l'intérieur de la boucle, exécute insertTaskInDOM(taskData)
 //    */
-//   async function displayTasks() {
-//     // Selectionner le container <ul>
-//     const ulElement = document.querySelector(".tasklist");
-//     // on supprime tout ce qu'il y a dans le <ul>
-//     ulElement.textContent = "";
+  async function displayCategories() {
+    // Selectionner le container <ul>
+    const ulElement = document.querySelector(".categorieslist");
+    // on supprime tout ce qu'il y a dans le <ul>
+    ulElement.textContent = "";
   
-//     // appeler la fonction qui va chercher les taches
-//     // on va chercher la liste des tâches actuellement enregistrées en BDD
-//     // On récupère la liste des Tasks au format JSON
-//     const data = await getTasks(); //! <=  Mise en 'async' de la requete pour que le reste continue de s'executer
+    // appeler la fonction qui va chercher les categories
+    // on va chercher la liste des categories actuellement enregistrées en BDD
+    // On récupère la liste des categories au format JSON
+    const data = await getCategories(); //! <=  Mise en 'async' de la requete pour que le reste continue de s'executer
   
-//     // faire une boucle sur le résultat, pour créer le DOM correspondant
-//     // for (const iterator of object)
-//     for (const task of data) {
-//       insertTaskInDom(task);
-//     }
-//   }
+    // faire une boucle sur le résultat, pour créer le DOM correspondant
+    //! for (const iterator of object)
+    for (const category of data) {
+      insertCategoryInDom(category);
+    }
+  }
   
   
