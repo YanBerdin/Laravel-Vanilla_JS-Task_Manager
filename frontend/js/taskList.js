@@ -1,11 +1,11 @@
 console.log("Yo taskList.js");
 //TODO INFO : adresse pour navigateur => http://localhost:8080/
 
-// Plan d'action : 
-// - on attend que le DOM soit complètement chargé
-// - on envoie une requête à l'API REST pour récupérer la liste des tâches
-// - si la réponse est ok, alors, on convertit le json en tableau d'objets JS
-// - on boucle sur le tableau pour créer des <li>, puis les insérer dans le <ul>
+//? Plan d'action : 
+//? - on attend que le DOM soit complètement chargé
+//? - on envoie une requête à l'API REST pour récupérer la liste des tâches
+//? - si la réponse est ok, alors, on convertit le json en tableau d'objets JS
+//? - on boucle sur le tableau pour créer des <li>, puis les insérer dans le <ul>
 
 
 /**
@@ -18,22 +18,27 @@ async function getTasks() {
   //! Async => Penser à Await
   // Début de l'exercice
   // Notre but : aller chercher la liste des pays sur RestCountries
-  //! API REST suis architecture REST alors que FETCH ne fait que envoyer / recevoir les requetes
+
+  //! API REST suis architecture REST 
+  //! alors que FETCH ne fait que envoyer / recevoir les requetes
   // On précise l'url du endpoint en argument de fetch.
   // C'est fetch qui se charge de contacter l'API
-  //et récupérer sa réponse dans la constante response.
+  // et récupérer sa réponse dans la constante response.
   // const response = await fetch('http://mon-api.com/endpoint');
+  //! On ne sait pas combien de temps l'API restcountries mettra à nous répondre :
+  //! await
   const response = await fetch("http://127.0.0.1:8000/api/tasks"); // envoi d'une requête HTTP vers un autre site !
-  //! On ne sait pas combien de temps l'API restcountries mettra à nous répondre : await
-  // fetch renvoie un objet qui est aussi Promess
+  
+  //! fetch renvoie un objet qui est aussi Promess
   console.log(response);
 
-  // On traduit la réponse de notre API qui est au format JSON au format JavaScript
+  //! On traduit la réponse de notre API qui est au format JSON au format JavaScript
   const data = await response.json();
   // TODO console.log(data);
 
   // Pour le moment, on obtient un tableau d'objets avec beaucoup d'informations, trop complexe.
-  // TODO On veut extraire les données qui nous sont nécessaire : le titre des taches
+  //! La réponse ne contient pas que du json mais aussi des headers entre autres
+  //? On veut extraire les données qui nous sont nécessaire : le titre des taches
 
   // On crée un tableau vide pour stocker les pays à afficher
   let tasksList = []; // (Déclaré par erreur au début avec const)
@@ -42,7 +47,7 @@ async function getTasks() {
   for (const taskFromAPI of data) {
     // console.log(taskFromAPI);
 
-    // Je crée un objet qui contient les informations nécessaires d'une seule Task,
+    //? Je crée un objet qui contient les informations nécessaires d'une seule Task,
     // => la Task courante (son id + son titre)
 
     const taskById = {
@@ -67,7 +72,7 @@ async function getTasks() {
 //     console.log("Chargement de handleLoadTasks(event)");
 // On empêche la page de se recharger
 
-// TODO On veut une fonction qui nous créer le DOM pour afficher UNE tâche !
+//? On veut une fonction qui nous créer le DOM pour afficher UNE tâche !
 /*
     <ul class="tasklist">
       <li data-id="0">
@@ -77,12 +82,13 @@ async function getTasks() {
       </li>
       </ul>
 */
+
+
 /**
  * insère un nouvel élément dans le DOM en y insérant les données stockées dans taskData
  * @param {object} Data
- */
-function insertTaskInDom(data) {
-  //!  <=  <= Methode qui affiche les données sur le DOM
+ *//! Methode qui affiche les données sur le DOM 
+function insertTaskInDom(data) { //! et ne return rien
 
   // Créer un <li>
   const liElement = document.createElement("li");
@@ -104,7 +110,8 @@ function insertTaskInDom(data) {
   // Inserer la classe 'delete'
   divDeleteElement.classList.add("delete");
   //console.log(divDeleteElement);
-// TODO  je place l'écouteur d'événement click (Atelier E05)
+
+//!  je place l'écouteur d'événement click (Atelier E05)
 divDeleteElement.addEventListener('click', handleDeleteTask);
 
 
@@ -135,6 +142,7 @@ divDeleteElement.addEventListener('click', handleDeleteTask);
 }
 
 /**
+ * ! Coordonne les 2 fonctions de récupération et d'insertion dans le Dom
  * supprime tout le DOM dans le <ul>
  * exécute getAllTasksFromApi()
  * boucle sur le résultat de la fonction getAllTasksFromApi()
@@ -158,23 +166,14 @@ async function displayTasks() {
   }
 }
 
-
-
-
-
-
-
-
-
-
-// async function removeTaskFromDom() {
-//     //!  <=  <= Methode qui affiche les données sur le DOM
-//     addEvents:  function() {
-//         // on sélectionne les boutons delete
-//     const deleteButtons = document.querySelectorAll("delete");
-// console.log(deleteButtons);
-//         // lorsqu'on click sur le bouton delete
-//         // on lance la méthode handleClickDeleteButton
-//     deleteButtons.addEventListener('click', slider.handleClickDeleteButton);
-// }
-// }
+//! Methode qui affiche les données sur le DOM
+//? async function removeTaskFromDom() {
+//?     addEvents:  function() {
+        // on sélectionne les boutons delete
+//?     const deleteButtons = document.querySelectorAll("delete");
+//? console.log(deleteButtons);
+        // lorsqu'on click sur le bouton delete
+        // on lance la méthode handleClickDeleteButton
+//?     deleteButtons.addEventListener('click', slider.handleClickDeleteButton);
+//? }
+//? }

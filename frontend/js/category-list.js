@@ -1,7 +1,7 @@
 console.log("Yo category-List.js");
 //TODO INFO : adresse pour navigateur => http://localhost:8080/
 
-// Plan d'action : 
+//? Plan d'action : 
 // - on attend que le DOM soit complètement chargé
 // - on envoie une requête à l'API REST pour récupérer la liste des tâches
 // - si la réponse est ok, alors, on convertit le json en tableau d'objets JS
@@ -32,7 +32,7 @@ async function getCategories() {
   // TODO console.log(data);
 
   // Pour le moment, on obtient un tableau d'objets avec beaucoup d'informations, trop complexe.
-  // TODO On veut extraire les données qui nous sont nécessaire : le titre des taches
+  // TODO On veut extraire les données qui nous sont nécessaires : le titre des taches
 
   // On crée un tableau vide pour stocker les pays à afficher
   let categoriesList = []; // (Déclaré par erreur au début avec const)
@@ -59,9 +59,9 @@ async function getCategories() {
 }
  // console.log(categoriesList);
 
- //! PAS BESOIN !! de : event.preventDefault();  => pas de formulaire !
+ //? PAS BESOIN de : event.preventDefault();  => pas de formulaire !
 
-// TODO On veut une fonction qui nous créer le DOM pour afficher UNE tâche !
+//TODO On veut une fonction qui nous créer le DOM pour afficher UNE tâche !
 /*
     <ul class="tasklist">
       <li data-id="0">
@@ -151,5 +151,4 @@ function insertCategoryInDom(data) {
       insertCategoryInDom(category);
     }
   }
-  
-  
+}

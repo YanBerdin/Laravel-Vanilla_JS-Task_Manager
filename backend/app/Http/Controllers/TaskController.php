@@ -18,9 +18,12 @@
 
 namespace App\Http\Controllers;
 
+//!Penser à 'USE' le Model Utilisé
 use App\Models\Task;
-//TODO =>   Penser à 'USE' le Model Utilisé
+
+//!Penser à 'USE' le Request
 use Illuminate\Http\Request;
+
 //! Implémentation de VALIDATOR => Dans create() et update() => S07E06
 use Illuminate\Support\Facades\Validator;
 
@@ -102,7 +105,7 @@ class TaskController extends Controller
         }
         //! Segment VALIDATOR ligne 90 à 103  => S07E06
 
-        // Extraction des valeurs passées de la body de la requête
+        // Extraction des valeurs passées dans le body de la requête
         $title = $request->input('title');
         // On va écraser l'ancienne valeur stockée dans la propriété title, et mettre la nouvelle
         $task->title = $title;
@@ -115,6 +118,7 @@ class TaskController extends Controller
             return response(null, 500); // 500 : Internal Server Error
         }
     }
+
     //Ne sera exécutée que si l'url http://127.0.0.1:8000/api/tasks/$id en méthode DELETE est appelée
     public function delete($id)
     {

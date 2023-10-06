@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   // return view('welcome');
+    return ('welcome sur mon API en Laravel');
 });
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,5 @@ Route::get('/', function () {
 // - un truc à afficher via par exemple : une méthode de controleur
 //     Ou ci dessous : un callback sous forme de fonction anonyme
 Route::get('/test', function () {      //    <=    <=   <=  FONCTION ANONYME = CALL BACK
-    return 'Bienvenue sur ma future API de test !';
+    return 'Bienvenue sur mon API de test !';
 });

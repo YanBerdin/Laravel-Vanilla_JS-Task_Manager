@@ -70,7 +70,7 @@ php artisan serve
 
 Si cette commande vous perturbe, vous pouvez toujours utiliser directement la commande suivante, plus proche de ce qu'on a déjà vu les saisons précédentes :
 ```
-php -S localhost:8000 server.php
+php -S localhost:8080 -t frontend
 ```
 
 ### Read The Funny Manual :heart:

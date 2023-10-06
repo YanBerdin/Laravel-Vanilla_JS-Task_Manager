@@ -1,4 +1,5 @@
 /**
+ * Supprime la tâche du DOM
  * Callback exécuté lorsqu'on clique sur une des icones de poubelles
  * @param  event
  */

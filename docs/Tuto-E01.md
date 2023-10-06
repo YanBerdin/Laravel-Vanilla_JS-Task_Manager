@@ -173,6 +173,7 @@ use App\Models\Movie;
 //! =>   Penser à 'USE' le Model Utilisé
 
 use Illuminate\Http\Request; // <=  Déjà implémenté par Eloquent
+
 class MovieController extends Controller // => Controller implémenté par Eloquent'
 {
     // Création de la méthode list
