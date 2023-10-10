@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Routes tasks ============================================================
 
 // EXEMPLE -> Route de récupération de la liste des films
 // Type : get
@@ -67,7 +68,7 @@ Route::post('/tasks', [TaskController::class, 'create']);
 // Methode HTTP : PUT
 // Controller : TaskController
 //? Méthode : update
-Route::put('/tasks/{id}', [TaskController::class, 'update'])->where('id', '[0-9]+');;
+Route::put('/tasks/{id}', [TaskController::class, 'update'])->where('id', '[0-9]+');
 //? Attention de ne pas oublier de préciser: ->where('id', '[0-9]+');
 
 
@@ -82,7 +83,7 @@ Route::delete('/tasks/{id}', [TaskController::class, 'delete'])->where('id', '[0
 // 'id','[0-9]+'
 //! INFO  => $id  ne peut etre composé que de au minimum 1 caractere composé de chiffre de 0 à 9 inclus
 
-//! Routes categories ============================================================
+// Routes categories ============================================================
 
 //? Route pour afficher la liste toutes les categories dans la table categories
 // Chemin : http://127.0.0.1:8000/api/categories/
@@ -98,7 +99,7 @@ Route::get('/categories/{id}', [CategoryController::class, 'show'])->where('id',
 // Route::post('/categories', [CategoryController::class, 'create']);
 
 
-//! Routes tags ============================================================
+// Routes tags ============================================================
 
 //? Route pour afficher la liste tout les tags dans la table tags
 //TODO | `/api/tags` | GET | - | Get all tags details | - |

@@ -1,65 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task manager</title>
-  <meta name="description" content="Un gestionnaire de tâches, pour vous aider au quotidien">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Relier fichier app.js -->
-  <script src="js/taskDelete.js" defer></script>
-  <script src="js/app.js" defer></script>
-  <script src="js/taskList.js" defer></script>
-  <script src="js/category-list.js" defer></script>
-</head>
-<body>
-  
-  <header>
-    <h1>Task manager</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task manager</title>
+    <meta
+      name="description"
+      content="Un gestionnaire de tâches, pour vous aider au quotidien"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Relier fichier app.js -->
 
-  <main>
+    <script src="js/app.js" defer></script>
+    <script src="js/taskList.js" defer></script>
+    <script src="js/category-list.js" defer></script>
+    <script src="js/taskDelete.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Task manager</h1>
+    </header>
 
-    <div class="create-task-container">
-      <button>nouvelle tâche</button>
-    </div>
+    <main>
+      <div class="create-task-container">
+        <button>nouvelle tâche</button>
+      </div>
 
-    <div class="message success" hidden>
-      la nouvelle tâche a bien été ajoutée
-    </div>
-    <div class="message danger" hidden>
-      oops, impossible de sauvegarder la tâche
-    </div>
-    
-    <ul class="tasklist">
-      <li data-id="0">
-        <p>sortir les poubelles</p>
-        <div class="delete"></div>
-        <div class="edit"></div>
-      </li>
-      <li data-id="1">
-        <p>communiquer avec l'API</p>
-        <div class="delete"></div>
-        <div class="edit"></div>
-      </li>
-      <li data-id="2">
-        <p>organiser une free-party</p>
-        <div class="delete"></div>
-        <div class="edit"></div>
-      </li>
-    </ul>
+      <div class="message success" hidden>
+        la nouvelle tâche a bien été ajoutée
+      </div>
+      <div class="message danger" hidden>
+        oops, impossible de sauvegarder la tâche
+      </div>
 
-    <div class="modal-dialog">
-      <form>
-        <h2>nouvelle tâche</h2>
-        <label for="task-title" class="screen-reader-only">titre de la tâche</label>
-        <input name= "id" id="task-id" type="hidden">
-        <input name= "title" id="task-title" placeholder="titre de la tâche..." type="text" required>
-        <button type="submit">ajouter</button>
-      </form>
-    </div>
+      <ul class="tasklist">
+        <li data-id="0">
+          <p>sortir les poubelles</p>
+          <div class="delete"></div>
+          <div class="edit"></div>
+        </li>
+        <li data-id="1">
+          <p>communiquer avec l'API</p>
+          <div class="delete"></div>
+          <div class="edit"></div>
+        </li>
+        <li data-id="2">
+          <p>organiser une free-party</p>
+          <div class="delete"></div>
+          <div class="edit"></div>
+        </li>
+      </ul>
 
-  </main>
-
-</body>
+      <div class="modal-dialog">
+        <form>
+          <h2>nouvelle tâche</h2>
+          <label for="task-title" class="screen-reader-only"
+            >titre de la tâche</label
+          >
+          <input name="id" id="task-id" type="hidden" />
+          <input
+            name="title"
+            id="task-title"
+            placeholder="titre de la tâche..."
+            type="text"
+            required
+          />
+          <button type="submit">ajouter</button>
+        </form>
+      </div>
+    </main>
+  </body>
 </html>

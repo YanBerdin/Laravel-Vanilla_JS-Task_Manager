@@ -7,10 +7,11 @@ const apiConfiguration = {
 
 async function initApp() {
   console.log('démarrage...initApp()');
-  //debugger;
+  // debugger;
   console.log("Yo app.js");
   displayTasks();
-  displayCategories();
+  // debugger;
+  //TODO displayCategories();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

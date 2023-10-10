@@ -73,10 +73,10 @@ async function getCategories() {
 */
 /**
  * insère un nouvel élément dans le DOM en y insérant les données stockées dans taskData
- * @param {object} Data
- */
-function insertCategoryInDom(data) {
-    //!  <=  <= Methode qui affiche les données sur le DOM
+ * @param {object} taskData
+ */ //! Methode qui affiche les données sur le DOM
+function insertCategoryInDom(taskData) {
+    
   
     // Créer un <em>
     const emElement = document.createElement("em");
@@ -117,7 +117,7 @@ function insertCategoryInDom(data) {
 //     //   const cardElement = clickedElement.closest('.card');
 //     //  const ulElement = pElement.closest(".tasklist");
   
-//     // Selectionner le container <ul>
+       // Selectionner le container <ul>
 //     const ulElement = document.querySelector(".tasklist");
 //     // Inserer le <li> dans le container <ul>
 //     ulElement.append(liElement);
