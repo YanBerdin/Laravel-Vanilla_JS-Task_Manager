@@ -22,17 +22,19 @@ async function getCategories() {
   // C'est fetch qui se charge de contacter l'API
   //et récupérer sa réponse dans la constante response.
   // const response = await fetch('http://mon-api.com/endpoint');
-  const response = await fetch("http://127.0.0.1:8000/api/categories"); // envoi d'une requête HTTP vers un autre site !
+  // const response = await fetch("http://127.0.0.1:8000/api/categories"); // envoi d'une requête HTTP vers un autre site !
+  const response = await fetch(apiConfiguration.endpoint + "/categories");
+  
   //! On ne sait pas combien de temps l'API restcountries mettra à nous répondre : await
   // fetch renvoie un objet qui est aussi Promess
   console.log(response);
 
   // On traduit la réponse de notre API qui est au format JSON au format JavaScript
   const data = await response.json();
-  // TODO console.log(data);
+  // console.log(data);
 
   // Pour le moment, on obtient un tableau d'objets avec beaucoup d'informations, trop complexe.
-  // TODO On veut extraire les données qui nous sont nécessaires : le titre des taches
+  // On veut extraire les données qui nous sont nécessaires : le titre des taches
 
   // On crée un tableau vide pour stocker les pays à afficher
   let categoriesList = []; // (Déclaré par erreur au début avec const)

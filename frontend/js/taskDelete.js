@@ -14,14 +14,15 @@ async function handleDeleteTask(event) {
 
   // On récupère la <li> parente la plus proche
   // DOC : https://developer.mozilla.org/fr/docs/Web/API/Element/closest
-  let taskElement = deleteButton.closest("li");
+  const taskElement = deleteButton.closest("li");
   // console.log( clickedButtonElement.parentElement );
   // console.log( clickedButtonElement.parentNode );
+  
   // console.log( taskElement );
 
   // Récupération de l'id de la tache pour le delete
   // je récupère l'identifiant de la tâche à supprimer via le dataset id
-  let taskID = taskElement.dataset.id;
+  const taskID = taskElement.dataset.id;
 
   // je tente d'appeler l'API pour supprimer la tâche
   const result = await deleteTaskFromApi(taskID); // await que l’API ai Delete la tâche

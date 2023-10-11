@@ -262,8 +262,8 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    // Création de la méthode show
-    public function show($id)
+    // Création de la méthode find
+    public function find($id)
     {
         // Utilisation de la méthode find() grâce à l'héritage
         $movie = Movie::find($id);

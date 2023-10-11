@@ -17,8 +17,8 @@ class CategoryController extends Controller
         return $categories;
     }
 
-    // Création de la méthode show($id)
-    public function show($id)
+    // Création de la méthode find($id)
+    public function find($id)
     {
         // Utilisation de la méthode find($id) grâce à l'héritage
         $category = Category::find($id);

@@ -27,7 +27,7 @@ async function getTasks() {
   //? On ne sait pas combien de temps l'API restcountries mettra à nous répondre :
   //? On await
 
-  //! 1) envoi d'une requête HTTP vers Endpoint (un autre site) !
+  //* 1) envoi d'une requête HTTP vers Endpoint (un autre site) !
   // const response = await fetch("http://127.0.0.1:8000/api/tasks");
   const response = await fetch(apiConfiguration.endpoint + "/tasks");
   //! fetch renvoie un objet qui est aussi Promess
@@ -40,9 +40,9 @@ async function getTasks() {
   // On crée un tableau vide pour stocker les pays à afficher
   // Ajouté suite à ma question pourquoi pas comme countries [] ?
   let tasksList = []; // (Déclaré par erreur au début avec const)
-  //! 2) On récupère la réponse qui ne contient pas QUE du json
+  //* 2) On récupère la réponse qui ne contient pas QUE du json
   if (response.status === 200) {
-    //! 3) n’en extraire que le json
+    //* 3) n’en extraire que le json
     tasksList = await response.json();
   }
   return tasksList;
@@ -62,9 +62,9 @@ async function getTasks() {
 /**
  * insère un nouvel élément dans le DOM en y insérant les données stockées dans taskData
  * @param {object} taskData
- */ //! Methode qui affiche les données sur le DOM
+ * Methode qui affiche les données sur le DOM
+*/ //* et ne return rien
 function insertTaskInDom(taskData) {
-  //! et ne return rien
 
   console.log(taskData);
   // ligne correspondant à 1ere ligne exemple
@@ -86,14 +86,32 @@ function insertTaskInDom(taskData) {
   // Inserer le <p> dans le <li>
   taskElement.append(titleElement);
 
-  //? Création du bouton delete + le stocker
+  //* E07 : Ajout de la catégorie 
+ //Créer l’élément <em>catégorie</em>
+  let categoryElt = document.createElement("em");
+
+  // Si la Tâche a une catégorie
+  if (taskData.category) {
+
+    // Insérer le nom de la catégorie
+    categoryElt.textContent = taskData.category.name;
+
+    // Insérer l’élément dans la tâche
+    taskElement.append(categoryElt);
+  }
+  // Si la Tâche n’a pas de catégorie
+  else{
+    categoryElt.textContent = "Non catégorisée";
+  }
+
+  //* Création du bouton delete + le stocker
   // Créer une <div class="delete"></div>
   const deleteElement = document.createElement("div");
 
   // Ajouter la classe 'delete' à cette <div>
   deleteElement.classList.add("delete");
 
-  //? Ajout bouton delete à l’élément tâche
+  //* Ajout bouton delete à l’élément tâche
   // Insérer la <div> dans le <li>
   taskElement.append(deleteElement);
 
@@ -149,14 +167,3 @@ async function displayTasks() {
   }
 }
 
-//! Methode qui affiche les données sur le DOM
-//? async function removeTaskFromDom() {
-//?     addEvents:  function() {
-// on sélectionne les boutons delete
-//?     const deleteButtons = document.querySelectorAll("delete");
-//? console.log(deleteButtons);
-// lorsqu'on click sur le bouton delete
-// on lance la méthode handleClickDeleteButton
-//?     deleteButtons.addEventListener('click', slider.handleClickDeleteButton);
-//? }
-//? }

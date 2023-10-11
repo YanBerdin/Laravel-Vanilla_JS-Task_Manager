@@ -46,12 +46,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
  Route::get('/tasks', [TaskController::class, 'list']);
 
 //! Route pour récupérer une task selon son id
-//TODO | `/api/tasks/[id]` | GET | - | Get a single task details | `id` - ID of the task to show |
+//TODO | `/api/tasks/[id]` | GET | - | Get a single task details | `id` - ID of the task to find |
 // Type : get
 // Chemin : http://127.0.0.1:8000/tasks/{id}
 // Controller : TaskController
-//? Méthode : show
- Route::get('/tasks/{id}', [TaskController::class, 'show'])->where('id', '[0-9]+');
+//? Méthode : find
+ Route::get('/tasks/{id}', [TaskController::class, 'find'])->where('id', '[0-9]+');
 
 
 //! Route pour créer une nouvelle task dans la table tasks
@@ -92,8 +92,8 @@ Route::get('/categories', [CategoryController::class, 'list']);
 
 
 //? Route pour afficher une categorie selon son id dans la table categories
-//TODO | `/api/categories/[id]` | GET | - | Get a single category details | `id` - ID of the category to show |
-Route::get('/categories/{id}', [CategoryController::class, 'show'])->where('id', '[0-9]+');
+//TODO | `/api/categories/[id]` | GET | - | Get a single category details | `id` - ID of the category to find |
+Route::get('/categories/{id}', [CategoryController::class, 'find'])->where('id', '[0-9]+');
 
 //TODO | `/api/categories`      | POST | `title` | Create a new category | - |
 // Route::post('/categories', [CategoryController::class, 'create']);
@@ -108,8 +108,8 @@ Route::get('/tags', [TagController::class, 'list']);
 
 
 //? Route pour afficher un tag selon son id dans la table tags
-//TODO | `/api/tags/[id]` | GET | - | Get a single tag details | `id` - ID of the tag to show |
-Route::get('/tags/{id}', [TagController::class, 'show'])->where('id', '[0-9]+');
+//TODO | `/api/tags/[id]` | GET | - | Get a single tag details | `id` - ID of the tag to find |
+Route::get('/tags/{id}', [TagController::class, 'find'])->where('id', '[0-9]+');
 
 //TODO | `/api/tags`      | POST | `title` | Create a new tag | - |
 // Route::post('/tags', [TagController::class, 'create']);

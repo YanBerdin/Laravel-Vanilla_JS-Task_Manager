@@ -1,20 +1,6 @@
 <?php
 
-//? Dans dossier app > http > Controllers
-//?     => créer MovieController.php
-//! attention le fichier doit avoir le même nom que la classe qu'il définit
-
-// class MovieController extends Controller
-//{
-// Création de la méthode list
-//    public function list ()
-//    {
-// Utilisation de la méthode all() grâce à l'héritage
-//        $movies = Movie::all();
-// Retour automatique au format JSON 👌
-//        return $movies;
-//    }
-//}
+//? attention le fichier doit avoir le même nom que la classe qu'il définit
 
 namespace App\Http\Controllers;
 
@@ -27,23 +13,32 @@ use Illuminate\Http\Request;
 //! Implémentation de VALIDATOR => Dans create() et update() => S07E06
 use Illuminate\Support\Facades\Validator;
 
-//TODO  => 'extends' 'Controller' implémenté par 'Eloquent' héritant de ses méthodes
+//? 'extends' du 'Controller' implémenté par 'Eloquent' héritant de ses méthodes
 class TaskController extends Controller
 {
     // Création de la méthode list
     public function list()
     {
         //  Utilisation de la méthode all() grâce à l'héritage
-        $tasks = Task::all();
+        // $tasks = Task::all(); // V1 sans load
+
+        //? grâce à la relation One To Many mise en place dans les modèles Task et Category,
+        //? nous pouvons maintenant faire appel à la méthode load()
+        // https://laravel.com/docs/10.x/eloquent-relationships#lazy-eager-loading
+
+        $tasks = Task::all()->load('category');
+        // TODO $tasks = Task::all()->load('category', 'tags');
+
         //  Retour automatique au format JSON 👌
         return $tasks;
     }
 
-    // Création de la méthode show
-    public function show($id)
+    // Création de la méthode find
+    public function find($id)
     {
         // Utilisation de la méthode find() grâce à l'héritage
-        $task = Task::find($id);
+        $task = Task::findOrFail($id)->load('category');
+
         // Retour automatique au format JSON 👌
         return $task;
     }
