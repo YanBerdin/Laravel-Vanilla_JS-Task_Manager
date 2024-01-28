@@ -14,6 +14,9 @@ class TagController extends Controller
     public function list()
     {
         // Utilisation de la méthode all() grâce à l'héritage
+        //? 💡 Eager Loading 💡
+        //? Indiquer explicitement que je veux que
+        //? toutes les relations de tags avec tasks soient chargées au démarrage
         $tags = Tag::all()->load('tasks');
         // Retour automatique au format JSON 👌
         // return $tags;
@@ -29,6 +32,9 @@ class TagController extends Controller
     {
         // Utilisation de la méthode find($id) grâce à l'héritage
         // $tag = Tag::find($id);
+        //? 💡 Eager Loading 💡
+        //? Indiquer explicitement que je veux que
+        //? toutes les relations de tasks avec categories soient chargées au démarrage
         $tag = Tag::findOrFail($id)->load('tasks');
 
         // if (!$tag) {

@@ -14,6 +14,9 @@ class CategoryController extends Controller
     public function list()
     {
         // Utilisation de la méthode all() grâce à l'héritage
+        //? 💡 Eager Loading 💡
+        //? Indiquer explicitement que je veux que
+        //? toutes les relations de tasks avec categories soient chargées au démarrage
         $categories = Category::all()->load('tasks');
         // Retour automatique au format JSON 👌
         // return $categories; // renvoie toutes les tâches liées à chaque catégory

@@ -25,6 +25,9 @@ class TaskController extends Controller
         //? grâce à la relation One To Many mise en place dans les modèles Task et Category,
         //? nous pouvons maintenant faire appel à la méthode load()
         // https://laravel.com/docs/10.x/eloquent-relationships#lazy-eager-loading
+        //? 💡Eager Loading 💡
+        //?Indiquer explicitement que je veux que
+        //? toutes les relations de tasks avec categories soient chargées au démarrage
 
         $tasks = Task::all()->load('category');
         // TODO => Récupérer la liste des tasks avec le nom de leur catégorie + tags
@@ -43,6 +46,9 @@ class TaskController extends Controller
     public function find($id)
     {
         // Utilisation de la méthode find() grâce à l'héritage
+        //? 💡Eager Loading 💡
+        //?Indiquer explicitement que je veux que
+        //? toutes les relations de tasks avec categories soient chargées au démarrage
         $task = Task::findOrFail($id)->load('category');
         // TODO => Récupérer la liste des tasks avec le nom de leur catégorie + tags
         //TODO $tasks = Task::all()->load('category', 'tags');
@@ -174,7 +180,7 @@ class TaskController extends Controller
         // FIXME: $task->deleteOrFail();
     }
 }
-// Dans le cadre d’une API Rest
+//! Dans le cadre d’une API Rest
 // on ne peut pas supprimer plusieurs occurrences en même temps
 // La normalisation des routes ne permet de modifier qu’1 par 1
-// Avec une architecture non Rest => On peut sans problème le faire
+//? Avec une architecture non Rest => On peut sans problème le faire
