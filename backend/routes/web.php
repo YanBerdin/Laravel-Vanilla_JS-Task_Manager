@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-   // return view('welcome');
-    return ('welcome sur mon API en Laravel');
+    return view('welcome');
+    // return ('welcome sur mon API en Laravel');
 });
 /*
 |--------------------------------------------------------------------------

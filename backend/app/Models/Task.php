@@ -3,12 +3,18 @@
 //!  => Déclarer la Classe vide héritant des capacités de Model
 //!  => 'extends' au Model implémenté par l'ORM 'Eloquent'
 
-namespace App\Models;// <=  Déjà implémenté par l'ORM Eloquent
+namespace App\Models; // <=  Déjà implémenté par l'ORM Eloquent
 
 use Illuminate\Database\Eloquent\Model; // <=  Déjà implémenté par Eloquent
 
+use App\Models\Category; //FIXME: Christ-H
+use App\Models\Tag; //FIXME: Christ-H
+// use Illuminate\Database\Eloquent\Relations\BelongsTo; //FIXME: Christ-H
+// use Illuminate\Database\Eloquent\Relations\BelongsToMany; //FIXME: Christ-H
+
 // Déclaration de la classe Task qui hérite des méthodes de Model)
-class Task extends Model {
+class Task extends Model
+{
 
     //Une tâche appartient à une seule catégorie
     // One TO Many inversée
@@ -21,14 +27,23 @@ class Task extends Model {
     // $myTask = Task::find(1);
     // $myTaskCateg = myTask->category();
     //* on peut maintenant utiliser load() !! Eager Loading
-    public function category()
+
+
+    /**
+     * Get the category that owns the task. Une seule category appartient à une tâche
+     */
+    public function category() //FIXME: : BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function tags()
+    /**
+     * The tags that belong to the tasks.
+     */
+    public function tags() //FIXME: : BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+        //FIXME: return $this->belongsToMany(Tag::class, 'tag_task', 'task_id', 'tag_id');
     }
 }
 
