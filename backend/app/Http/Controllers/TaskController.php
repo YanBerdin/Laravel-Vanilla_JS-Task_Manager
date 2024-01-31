@@ -29,9 +29,9 @@ class TaskController extends Controller
         //?Indiquer explicitement que je veux que
         //? toutes les relations de tasks avec categories soient chargées au démarrage
 
-        $tasks = Task::all()->load('category');
+        //* $tasks = Task::all()->load('category');
         // TODO => Récupérer la liste des tasks avec le nom de leur catégorie + tags
-        //TODO $tasks = Task::all()->load('category', 'tags');
+        $tasks = Task::all()->load('category', 'tags');
 
         //  Retour automatique au format JSON 👌
         // return $tasks;
@@ -49,9 +49,9 @@ class TaskController extends Controller
         //? 💡Eager Loading 💡
         //?Indiquer explicitement que je veux que
         //? toutes les relations de tasks avec categories soient chargées au démarrage
-        $task = Task::findOrFail($id)->load('category');
+        // $task = Task::findOrFail($id)->load('category');
         // TODO => Récupérer la liste des tasks avec le nom de leur catégorie + tags
-        //TODO $tasks = Task::all()->load('category', 'tags');
+        $task = Task::all()->load('category', 'tags');
 
         // Retour automatique au format JSON 👌
         return $task;
