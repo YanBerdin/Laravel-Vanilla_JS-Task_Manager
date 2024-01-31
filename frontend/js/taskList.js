@@ -1,5 +1,6 @@
 console.log("Yo taskList.js");
-//TODO INFO : adresse pour navigateur => http://localhost:8080/
+
+// INFO : adresse pour navigateur => http://localhost:8080/
 
 //? Plan d'action :
 //? - on attend que le DOM soit complètement chargé
@@ -8,8 +9,7 @@ console.log("Yo taskList.js");
 //? - on boucle sur le tableau pour créer des <li>, puis les insérer dans le <ul>
 
 /**
- * Charge la liste de toutes les Tasks depuis l'API Task
- * Va chercher la liste des tâches via l'API REST
+ * Charge la liste de toutes les Tasks depuis l'API Task (API REST)
  * @return {array} taskList
  */
 async function getTasks() {
@@ -63,9 +63,8 @@ async function getTasks() {
  * insère un nouvel élément dans le DOM en y insérant les données stockées dans taskData
  * @param {object} taskData
  * Methode qui affiche les données sur le DOM
-*/ //* et ne return rien
+ */ //* et ne return rien
 function insertTaskInDom(taskData) {
-
   console.log(taskData);
   // ligne correspondant à 1ere ligne exemple
   // <li data-id="0">
@@ -76,7 +75,7 @@ function insertTaskInDom(taskData) {
   // Recuperer et Inserer l'id de la Task dans le <li>
   taskElement.dataset.id = taskData.id;
 
-  // <p>sortir les poubelles</p>
+  //* <p>sortir les poubelles</p>
   // Créer un <p>
   const titleElement = document.createElement("p");
 
@@ -86,26 +85,28 @@ function insertTaskInDom(taskData) {
   // Inserer le <p> dans le <li>
   taskElement.append(titleElement);
 
-  //* E07 : Ajout de la catégorie 
- //Créer l’élément <em>catégorie</em>
-  let categoryElt = document.createElement("em");
+  //? E07 : Ajout de la catégorie
+  // Créer l’élément => <em>catégorie</em>
 
   // Si la Tâche a une catégorie
   if (taskData.category) {
+    let categoryElt = document.createElement("em");
 
     // Insérer le nom de la catégorie
     categoryElt.textContent = taskData.category.name;
 
+    // Insérer la clé étrangère de l'id de la catégorie
+    categoryElt.dataset.id = taskData.category_id;
     // Insérer l’élément dans la tâche
-    taskElement.append(categoryElt);
+    FIXME: taskElement.append(categoryElt);
   }
-  // Si la Tâche n’a pas de catégorie
-  else{
-    categoryElt.textContent = "Non catégorisée";
-  }
+  //* Si la Tâche n’a pas de catégorie
+  //*else {
+  //*  categoryElt.textContent = "Non catégorisée";
+ //* }
 
-  //* Création du bouton delete + le stocker
-  // Créer une <div class="delete"></div>
+  //? Création du bouton delete + le stocker
+  // Créer => <div class="delete"></div>
   const deleteElement = document.createElement("div");
 
   // Ajouter la classe 'delete' à cette <div>
@@ -115,9 +116,10 @@ function insertTaskInDom(taskData) {
   // Insérer la <div> dans le <li>
   taskElement.append(deleteElement);
 
-  //! je place l'écouteur d'événement click sur le bouton 🗑 S07E06
+  // je place l'écouteur d'événement click sur le bouton 🗑 S07E06
   deleteElement.addEventListener("click", handleDeleteTask);
 
+  //TODO Création du bouton edit + le stocker
   // Créer <div class="edit"></div>
   const editElement = document.createElement("div");
 
@@ -127,13 +129,16 @@ function insertTaskInDom(taskData) {
   // Inserer la div "edit" dans le <li>
   taskElement.append(editElement);
 
+  // je place l'écouteur d'événement click
+  editElement.addEventListener("click", handleEditTask);
+
   // Selectionner le container <ul>
   const taskListElement = document.querySelector(".tasklist");
 
   // Inserer le <li> dans la liste (le container <ul>)
   taskListElement.append(taskElement);
 
-  // Version de PierreOclock avec closest() qui récupère parent ciblé le + proche
+  //* Version de PierreOclock avec closest() qui récupère parent ciblé le + proche
   // On récupere le ul
   // nomDeLaVariableContenantUnElément.closest(.classeDuParentRecherché )
   //  const cardElement = clickedElement.closest('.card');
@@ -142,7 +147,7 @@ function insertTaskInDom(taskData) {
 
 /**
  * ! Coordonne les 2 fonctions de récupération et d'insertion dans le Dom
- * supprime tout le DOM dans le <ul>
+ ** supprime tout le DOM dans le <ul>
  * exécute getAllTasksFromApi()
  * boucle sur le résultat de la fonction getAllTasksFromApi()
  * à l'intérieur de la boucle, exécute insertTaskInDOM(taskData)
@@ -158,7 +163,8 @@ async function displayTasks() {
   // appeler la fonction qui va chercher les taches
   // on va chercher la liste des tâches actuellement enregistrées en BDD
   // On récupère la liste des Tasks au format JSON
-  const data = await getTasks(); //! <=  Mise en 'async' de la requete pour que le reste continue de s'executer
+   //! Mise en 'async' de la requete pour que le reste continue de s'executer
+  const data = await getTasks();
 
   // faire une boucle sur le résultat, pour créer le DOM correspondant
   // for (const iterator of object)
@@ -166,4 +172,3 @@ async function displayTasks() {
     insertTaskInDom(task);
   }
 }
-

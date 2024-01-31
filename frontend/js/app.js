@@ -8,17 +8,20 @@ async function initApp() {
   // debugger;
   console.log("Yo app.js");
 
-  //! ajout écouteur d'événement sur le bouton ajouter nouvelle tâche
+  // ajout écouteur d'événement sur le bouton ajouter nouvelle tâche
   const createTaskBtn = document.querySelector(".create-task-container button");
   createTaskBtn.addEventListener("click", displayCreateForm);
 
-  //! ajout écouteur d'événement submit sur le formulaire d'ajout
+  // ajout écouteur d'événement submit sur le formulaire d'ajout
   const newTaskForm = document.querySelector(".modal-dialog form");
   newTaskForm.addEventListener("submit", handleTaskFormSubmit);
 
-  displayTasks();
+  // affiche la liste des tâches
+  await displayTasks();
   // debugger;
-
+  
+  // remplit le select du formulaire avec les options
+  await fillCategoryOption();
 }
 
 document.addEventListener("DOMContentLoaded", initApp);

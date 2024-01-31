@@ -2,20 +2,24 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task manager</title>
     <meta
       name="description"
       content="Un gestionnaire de tâches, pour vous aider au quotidien"
-    />
+    >
     <link rel="stylesheet" href="css/style.css" />
+
     <!-- Relier fichier app.js -->
 
-    <script src="js/app.js" defer></script>
+    <script src="js/taskUpdate.js" defer></script>
+    <script src="js/taskCreate.js" defer></script>
+    <script src="js/taskDelete.js" defer></script>
     <script src="js/taskList.js" defer></script>
     <script src="js/category-list.js" defer></script>
-    <script src="js/taskDelete.js" defer></script>
-    <script src="js/taskCreate.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+
 
   </head>
   <body>
@@ -28,8 +32,11 @@
         <button>nouvelle tâche</button>
       </div>
 
-      <div class="message success" hidden>
+      <div class="message success create" hidden>
         la nouvelle tâche a bien été ajoutée
+      </div>
+      <div class="message success update" hidden>
+        la tâche a bien été modifiée
       </div>
       <div class="message danger" hidden>
         oops, impossible de sauvegarder la tâche
@@ -67,9 +74,19 @@
             type="text"
             required
           />
-          <button type="submit">ajouter</button>
+          <label for="task-category" class="screen-reader-only">choisir la catégorie</label>
+          <select name="category_id" id="task-category"></select>
+          <button>ajouter</button>
         </form>
       </div>
     </main>
+    <!-- <script src="js/taskUpdate.js" ></script>
+    <script src="js/taskCreate.js" ></script>
+    <script src="js/taskDelete.js" ></script>
+  
+    <script src="js/taskList.js" ></script>
+    <script src="js/category-list.js" ></script>
+    <script src="js/app.js" ></script> -->
   </body>
+
 </html>

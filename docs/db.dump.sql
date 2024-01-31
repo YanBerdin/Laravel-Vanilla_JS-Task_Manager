@@ -58,3 +58,53 @@ CREATE TABLE `tags` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- Modif Post Oclock
+-- DROP TABLE IF EXISTS `tasks`;
+
+-- CREATE TABLE `tasks` (
+--   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+--   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `status` tinyint(4) NOT NULL DEFAULT 0,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL,
+--   `category_id` int unsigned NULL,
+--   `tag_id` int unsigned NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- version perso
+-- INSERT INTO `tasks` (`id`, `title`, `created_at`, `updated_at`, `category_id`) VALUES
+-- (1,'Acheter une salade', '2022-08-21 19:13:59', '2022-08-21 19:13:59',1),
+-- (3,'Laver son assiette', '2022-08-21 19:14:33', '2022-08-21 19:14:33',2),
+-- (4,'Manger des frites', '2023-03-30 22:50:28', '2023-03-31 00:08:32',3),
+-- (5,'balayer devant ma porte', '2023-04-05 17:54:55', '2023-04-05 17:54:55',2),
+-- (6,'Donner à manger aux oiseaux', '2023-04-05 18:01:35', '2023-04-05 18:01:35',2),
+-- (7,'Apprendre la POO', '2023-04-05 18:02:31', '2023-04-05 18:02:31',3),
+-- (8,'Apprendre la physique Quantique', '2023-10-03 09:38:32', '2023-10-03 09:38:32',3),
+-- (9,'Apprendre Python', '2023-10-10 14:01:01', '2023-10-10 14:01:01',3),
+-- (10,'Apprendre PHP', '2023-10-10 21:25:45', '2023-10-10 21:25:45',3);
+
+
+-- A utiliser si besoin
+-- ALTER TABLE `tasks`
+-- ADD `task_id` int unsigned NULL;
+-- ADD `tag_id` int unsigned NULL;
+
+
+
+-- TABLE DE LIAISON => E06 Marion
+
+-- CREATE TABLE `EST_TAGGÉE_PAR` (
+--   `id` VARCHAR(42),
+--   `id_1` VARCHAR(42),
+--   PRIMARY KEY (`id`, `id_1`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+-- Version perso
+CREATE TABLE `tag_task` (
+  `tag_id` VARCHAR(42),
+  `task_id` VARCHAR(42),
+  PRIMARY KEY (`tag_id`, `task_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
