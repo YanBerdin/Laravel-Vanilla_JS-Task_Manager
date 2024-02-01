@@ -37,6 +37,18 @@ function handleEditTask(event) {
   const dialogElement = document.querySelector(".modal-dialog");
   console.log(dialogElement);
 
+  // Récupère l'élément h2 dans le formulaire
+  const h2Element = dialogElement.querySelector("h2");
+
+  // Change le texte du bouton
+  h2Element.textContent = "Modifier cette tâche";
+
+  // Récupère le bouton dans le formulaire
+  const buttonElement = dialogElement.querySelector("button");
+
+  // Change le texte de l'élément h2
+  buttonElement.textContent = "Modifier";
+
   // Récupère l'id de la tâche
   const taskIdField = dialogElement.querySelector('input[name="id"]');
   //console.log(taskIdField);

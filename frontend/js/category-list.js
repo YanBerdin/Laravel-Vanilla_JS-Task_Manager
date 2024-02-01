@@ -7,7 +7,7 @@ console.log("Yo category-List.js");
 
 /**
  * Charge la liste de toutes les Tasks depuis l'API REST
- * 
+ *
  * @return {array} taskList
  */
 async function getCategories() {
@@ -47,8 +47,16 @@ async function fillCategoryOption() {
   const selectElt = document.querySelector(
     '.modal-dialog select[name="category_id"]'
   );
+  // Récupère la liste des catégories
   const categoryList = await getCategories();
-  
+
+  // Créer l'option de titre
+  const titleOptionElt = document.createElement("option");
+  titleOptionElt.value = "";
+  titleOptionElt.textContent = "Choisissez une catégorie";
+  selectElt.append(titleOptionElt);
+
+  // Créer les options pour chaque catégorie
   categoryList.forEach(function (category) {
     const optionElt = document.createElement("option");
     optionElt.value = category.id;
