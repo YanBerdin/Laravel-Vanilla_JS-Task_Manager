@@ -39,7 +39,7 @@ async function getTasks() {
 
   // On crée un tableau vide pour stocker les pays à afficher
   // Ajouté suite à ma question pourquoi pas comme countries [] ?
-  let tasksList = []; // (Déclaré par erreur au début avec const)
+  let tasksList = []; //! (Déclaré par erreur au début avec const)
   //* 2) On récupère la réponse qui ne contient pas QUE du json
   if (response.status === 200) {
     //* 3) n’en extraire que le json
@@ -59,6 +59,13 @@ async function getTasks() {
       </ul>
 */
 
+//FIXME:
+function resetTaskForm() {
+  console.log("resetTaskForm() called"); 
+  const taskForm = document.querySelector(".modal-dialog form");
+  taskForm.reset();
+}
+
 /**
  * insère un nouvel élément dans le DOM en y insérant les données stockées dans taskData
  * @param {object} taskData
@@ -70,7 +77,7 @@ function insertTaskInDom(taskData) {
   // <li data-id="0">
 
   // On créé notre élément qui représent notre tache, ici un <li>
-  let taskElement = document.createElement("li");
+  const taskElement = document.createElement("li");
   console.log(taskElement);
   // Recuperer et Inserer l'id de la Task dans le <li>
   // On lui défini l'attribut de donnée data-id et y stocke l'ID de la task en BDD
@@ -78,7 +85,7 @@ function insertTaskInDom(taskData) {
 
   //* <p>sortir les poubelles</p>
   // Ensuite on passe au contenu du <li>, d'abord le titre en <p>
-  let titleElement = document.createElement("p");
+  const titleElement = document.createElement("p");
 
   // On définit le contenu textuel de cette nouvelle balise <p> parle titre de la tache
   // Inserer le titre de la Task dans <p>
@@ -90,7 +97,7 @@ function insertTaskInDom(taskData) {
 
   //? E07 : Ajout de la catégorie
   // Créer l’élément => <em>catégorie</em>
-  let categoryElt = document.createElement("em");
+  const categoryElt = document.createElement("em");
   // Si la Tâche a une catégorie
   if (taskData.category != null) {
     // Insérer le nom de la catégorie
@@ -111,7 +118,7 @@ function insertTaskInDom(taskData) {
 
   //? Création du bouton delete + le stocker
   // Créer => <div class="delete"></div>
-  let deleteElement = document.createElement("div");
+  const deleteElement = document.createElement("div");
 
   // Ajouter la classe 'delete' à cette <div>
   deleteElement.classList.add("delete");
@@ -168,7 +175,7 @@ async function displayTasks() {
   // on va chercher la liste des tâches actuellement enregistrées en BDD
   // On récupère la liste des Tasks au format JSON
   //! Mise en 'async' de la requete pour que le reste continue de s'executer
-  let data = await getTasks();
+  const data = await getTasks();
 
   // Boucle sur le résultat, pour créer le DOM correspondant
   // for (const iterator of object)

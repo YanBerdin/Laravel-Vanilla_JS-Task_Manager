@@ -35,22 +35,22 @@ async function getCategories() {
   let categoriesList = []; // (Déclaré par erreur au début avec const)
 
   if (response.status === 200) {
-    //FIXME: Traduire la réponse de l'API qui est au format JSON au format JavaScript
+    //Réponse de l'API au format JSON
     categoriesList = await response.json();
   }
   console.log(categoriesList);
-  console.log("getTasks() -> liste des taches récupérée"); //FIXME:
+  console.log("getTasks() -> liste des taches récupérée");
   return categoriesList;
 }
 
 async function fillCategoryOption() {
-  let selectElt = document.querySelector(
+  const selectElt = document.querySelector(
     '.modal-dialog select[name="category_id"]'
   );
   const categoryList = await getCategories();
   
   categoryList.forEach(function (category) {
-    let optionElt = document.createElement("option");
+    const optionElt = document.createElement("option");
     optionElt.value = category.id;
     optionElt.textContent = category.name;
     selectElt.append(optionElt);
