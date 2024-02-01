@@ -31,7 +31,20 @@ async function handleDeleteTask(event) {
   // On retire l'élement du DOM
   if (result === true) {
     taskElement.remove();
-    console.log("Tâche supprimée de la liste"); //?log-order->2
+    messageElt = document.querySelector(".message.success.delete");
+    messageElt.removeAttribute("hidden");
+
+    console.log("Tâche supprimée"); //?log-order->2
+
+    //* Ajouter un événement de clic à l'alerte pour la fermer manuellement
+    messageElt.addEventListener("click", function () {
+      messageElt.setAttribute("hidden", "true");
+    });
+
+    //* Masquer l'alerte après 5 secondes
+    setTimeout(function () {
+      messageElt.setAttribute("hidden", "true");
+    }, 50000); // Rappel: 1000ms => 1 sec
   } else {
     alert("la suppression n'est pas possible");
   }
