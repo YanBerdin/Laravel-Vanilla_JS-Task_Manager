@@ -111,7 +111,9 @@ button {
 button:active {
   transform: translateY(0.125rem);
 }
-
+button:hover {
+  background-color: var(--color-canvas-subtle);
+}
 /**
  * Messages
  */

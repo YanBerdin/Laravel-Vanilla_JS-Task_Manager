@@ -1,4 +1,5 @@
 console.log("Yo taskUpdate.js");
+
 /**
  * Fonction appelée lors du click sur le bouton.
  * Pour modifier une tache, on va utiliser le même formulaire que pour la création d'une tâche
@@ -6,27 +7,53 @@ console.log("Yo taskUpdate.js");
  * @param {Event} event
  */
 function handleEditTask(event) {
-  // console.log("chargement handleEditTask"); //FIXME:
+  console.log("chargement handleEditTask");
 
-  // on veut récupérer l'élément qui vient d'être cliqué
-  const editButton = event.target;
-  const taskElement = editButton.closest("li");
+  // on veut récupérer l'élément qui vient d'être cliqué (<div class="edit">)
+  // let editButton = event.target;
+  // console.log(editButton);
+
+  // Récupérer le <li> qui contient la tache clickée
+  // let taskElement = editButton.closest("li");
+  // console.log(taskElement);
+
+  let taskElement = event.currentTarget.closest("li");
   console.log(taskElement);
 
-  const id = taskElement.dataset.id;
-  const title = taskElement.querySelector("p").textContent;
-  const category_id = taskElement.querySelector("em").dataset.id;
+  // Récupérer l'id de la tâche
+  let id = taskElement.dataset.id;
 
-  // récupère les champs du formulaire, et on les remplit avec les données extraites ci-dessus
-  const dialogElement = document.querySelector(".modal-dialog");
-  const taskIdField = dialogElement.querySelector('input[name="id"]');
+  // Récupérer son titre
+  let title = taskElement.querySelector("p").textContent;
+
+  // Récupérer l'id de sa catégorie (clé étrangère)
+  let category_id = taskElement.querySelector("em").dataset.id;
+  console.log(category_id);
+
+  // Récupère les champs du formulaire,
+  // et les remplir avec les données extraites ci-dessus
+
+  // Récupère le formulaire
+  let dialogElement = document.querySelector(".modal-dialog");
+  console.log(dialogElement);
+
+  // Récupère l'id de la tâche
+  let taskIdField = dialogElement.querySelector('input[name="id"]');
+  //console.log(taskIdField);
   taskIdField.value = id;
-  const taskTitleField = dialogElement.querySelector('input[name="title"]');
+  //console.log(id);
+
+  // Récupère le titre de la tâche
+  let taskTitleField = dialogElement.querySelector('input[name="title"]');
   taskTitleField.value = title;
-  const categoryIdSelect = dialogElement.querySelector(
+  console.log(title);
+
+  // Récupère sa catégorie
+  let categoryIdSelect = dialogElement.querySelector(
     'select[name="category_id"]'
   );
   categoryIdSelect.value = category_id;
+  console.log(category_id);
 
   // puis on affiche le formulaire
   displayCreateForm();
@@ -38,7 +65,7 @@ function handleEditTask(event) {
  * @param {FormData} data
  */
 async function updateTaskFromApi(id, data) {
-  const result = await fetch(apiConfiguration.endpoint + "/tasks/" + id, {
+  let result = await fetch(apiConfiguration.endpoint + "/tasks/" + id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -46,7 +73,7 @@ async function updateTaskFromApi(id, data) {
     body: JSON.stringify(data),
   });
   if (result.ok) {
-    const task = result.json(); // transforme le retour de l'api en un objet JSON
+    let task = result.json(); // transforme le retour de l'api en un objet JSON
     return task;
   } else {
     return false;

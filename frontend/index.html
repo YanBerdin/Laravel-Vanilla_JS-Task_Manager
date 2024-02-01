@@ -2,32 +2,30 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task manager</title>
     <meta
       name="description"
       content="Un gestionnaire de tâches, pour vous aider au quotidien"
-    >
+    />
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- Relier fichier app.js -->
-
-    <script src="js/taskUpdate.js" defer></script>
-    <script src="js/taskCreate.js" defer></script>
-    <script src="js/taskDelete.js" defer></script>
+    <script src="js/app.js" defer></script>
     <script src="js/taskList.js" defer></script>
     <script src="js/category-list.js" defer></script>
-    <script src="js/app.js" defer></script>
-
-
-
+    <script src="js/taskCreate.js" defer></script>
+    <script src="js/taskDelete.js" defer></script>
+    <script src="js/taskUpdate.js" defer></script>
   </head>
   <body>
+
     <header>
       <h1>Task manager</h1>
     </header>
 
     <main>
+
       <div class="create-task-container">
         <button>nouvelle tâche</button>
       </div>
@@ -43,7 +41,7 @@
       </div>
 
       <ul class="tasklist">
-        <li data-id="0">
+        <!-- <li data-id="0">
           <p>sortir les poubelles</p>
           <div class="delete"></div>
           <div class="edit"></div>
@@ -57,7 +55,7 @@
           <p>organiser une free-party</p>
           <div class="delete"></div>
           <div class="edit"></div>
-        </li>
+        </li> -->
       </ul>
 
       <div class="modal-dialog">
@@ -74,19 +72,13 @@
             type="text"
             required
           />
-          <label for="task-category" class="screen-reader-only">choisir la catégorie</label>
+          <label for="task-category" class="screen-reader-only"
+            >choisir la catégorie</label
+          >
           <select name="category_id" id="task-category"></select>
           <button>ajouter</button>
         </form>
       </div>
     </main>
-    <!-- <script src="js/taskUpdate.js" ></script>
-    <script src="js/taskCreate.js" ></script>
-    <script src="js/taskDelete.js" ></script>
-  
-    <script src="js/taskList.js" ></script>
-    <script src="js/category-list.js" ></script>
-    <script src="js/app.js" ></script> -->
   </body>
-
 </html>

@@ -65,49 +65,53 @@ async function getTasks() {
  * Methode qui affiche les données sur le DOM
  */ //* et ne return rien
 function insertTaskInDom(taskData) {
-  console.log(taskData);
+  //TODO console.log(taskData);
   // ligne correspondant à 1ere ligne exemple
   // <li data-id="0">
 
-  // Créer un <li>
-  const taskElement = document.createElement("li");
-
+  // On créé notre élément qui représent notre tache, ici un <li>
+  let taskElement = document.createElement("li");
+  console.log(taskElement);
   // Recuperer et Inserer l'id de la Task dans le <li>
+  // On lui défini l'attribut de donnée data-id et y stocke l'ID de la task en BDD
   taskElement.dataset.id = taskData.id;
 
   //* <p>sortir les poubelles</p>
-  // Créer un <p>
-  const titleElement = document.createElement("p");
+  // Ensuite on passe au contenu du <li>, d'abord le titre en <p>
+  let titleElement = document.createElement("p");
 
-  // Recuperer et Inserer le titre de la Task dans <p>
+  // On définit le contenu textuel de cette nouvelle balise <p> parle titre de la tache
+  // Inserer le titre de la Task dans <p>
   titleElement.textContent = taskData.title;
 
+  // Il ne faut pas oublier d'indiquer que cette balise doit etre DANS la <li> créé précédemment
   // Inserer le <p> dans le <li>
   taskElement.append(titleElement);
 
   //? E07 : Ajout de la catégorie
   // Créer l’élément => <em>catégorie</em>
-
+  let categoryElt = document.createElement("em");
   // Si la Tâche a une catégorie
-  if (taskData.category) {
-    let categoryElt = document.createElement("em");
-
+  if (taskData.category != null) {
     // Insérer le nom de la catégorie
     categoryElt.textContent = taskData.category.name;
-
-    // Insérer la clé étrangère de l'id de la catégorie
-    categoryElt.dataset.id = taskData.category_id;
-    // Insérer l’élément dans la tâche
-    FIXME: taskElement.append(categoryElt);
   }
-  //* Si la Tâche n’a pas de catégorie
-  //*else {
-  //*  categoryElt.textContent = "Non catégorisée";
- //* }
+  // Si la Tâche n’a pas de catégorie
+  else {
+    categoryElt.textContent = "Non catégorisée";
+  }
+
+  // Insérer la clé étrangère de l'id de la catégorie
+  categoryElt.dataset.id = taskData.category_id;
+
+  // Insérer l’élément dans la tâche
+  taskElement.append(categoryElt);
+
+  // console.log(titleElement);
 
   //? Création du bouton delete + le stocker
   // Créer => <div class="delete"></div>
-  const deleteElement = document.createElement("div");
+  let deleteElement = document.createElement("div");
 
   // Ajouter la classe 'delete' à cette <div>
   deleteElement.classList.add("delete");
@@ -146,7 +150,7 @@ function insertTaskInDom(taskData) {
 }
 
 /**
- * ! Coordonne les 2 fonctions de récupération et d'insertion dans le Dom
+ * ? Coordonne les 2 fonctions de récupération et d'insertion dans le Dom
  ** supprime tout le DOM dans le <ul>
  * exécute getAllTasksFromApi()
  * boucle sur le résultat de la fonction getAllTasksFromApi()
@@ -163,10 +167,10 @@ async function displayTasks() {
   // appeler la fonction qui va chercher les taches
   // on va chercher la liste des tâches actuellement enregistrées en BDD
   // On récupère la liste des Tasks au format JSON
-   //! Mise en 'async' de la requete pour que le reste continue de s'executer
-  const data = await getTasks();
+  //! Mise en 'async' de la requete pour que le reste continue de s'executer
+  let data = await getTasks();
 
-  // faire une boucle sur le résultat, pour créer le DOM correspondant
+  // Boucle sur le résultat, pour créer le DOM correspondant
   // for (const iterator of object)
   for (const task of data) {
     insertTaskInDom(task);

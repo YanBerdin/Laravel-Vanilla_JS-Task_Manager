@@ -1,5 +1,4 @@
 console.log("Yo taskDelete.js");
-
 /**
  * Supprime la tâche du DOM
  * Callback exécuté lorsqu'on clique sur une des icones de poubelles
@@ -32,7 +31,7 @@ async function handleDeleteTask(event) {
   // On retire l'élement du DOM
   if (result === true) {
     taskElement.remove();
-    console.log("Tâche supprimée de la liste"); //FIXME:
+    console.log("Tâche supprimée de la liste"); //?log-order->2
   } else {
     alert("la suppression n'est pas possible");
   }
@@ -44,15 +43,15 @@ async function handleDeleteTask(event) {
 async function deleteTaskFromApi(task_id) {
   // await la réponse de suppression
   const response = await fetch(
+    // Concaténation avec +
+    // 1er parametre de fetch = URL
     apiConfiguration.endpoint + "/tasks/" + task_id,
     {
-      // Concaténation avec +
-      // 1er parametre de fetch = URL
       method: "DELETE", // 2nd param de fetch = options
     }
   );
   if (response.status === 200) {
-    console.log("Tâche supprimée de la BDD"); //FIXME:
+    console.log("Tâche supprimée de la BDD"); //? log-order->1
     console.log(response);
     return true;
   }
