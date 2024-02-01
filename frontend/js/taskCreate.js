@@ -27,16 +27,18 @@ function displayCreateForm() {
 
   //* Bouton ajout nouvelle tâche
   // on sélectionne la div qui contient le bouton d'affichage du formulaire
-  const createTaskContElement = document.querySelector(".create-task-container");
-
+  const createTaskContElement = document.querySelector(
+    ".create-task-container"
+  );
   // on lui ajoute un attribut hidden
   createTaskContElement.setAttribute("hidden", "true");
 
-  //* Messages d'echec //FIXME:
+  //* Messages d'echec //
   const messageDgrElt = document.querySelector(".message.danger");
   // on lui ajoute un attribut hidden
   messageDgrElt.setAttribute("hidden", "true");
-  //* Message de réussite //FIXME:
+
+  //* Message de réussite
   const messageScsElt = document.querySelector(".message.success");
   // on lui ajoute un attribut hidden
   messageScsElt.setAttribute("hidden", "true");
@@ -50,7 +52,7 @@ function hideCreateForm() {
   //on sélectionne la div qui contient le formulaire
   const dialogElement = document.querySelector(".modal-dialog");
 
-  // on lui ajoute la classe CSS show
+  // on lui supprime la classe CSS show
   dialogElement.classList.remove("show");
 
   //* Liste des tâches
@@ -69,7 +71,9 @@ function hideCreateForm() {
 
   //* Bouton ajout nouvelle tâche
   // on sélectionne la div qui contient le bouton d'affichage du formulaire
-  const createTaskContElement = document.querySelector(".create-task-container");
+  const createTaskContElement = document.querySelector(
+    ".create-task-container"
+  );
 
   // on lui ajoute un attribut hidden
   createTaskContElement.removeAttribute("hidden");

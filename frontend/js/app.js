@@ -16,6 +16,15 @@ async function initApp() {
   const newTaskForm = document.querySelector(".modal-dialog form");
   newTaskForm.addEventListener("submit", handleTaskFormSubmit);
 
+  //TODO Ecoute du clic sur le bouton de fermeture de la modal
+  // let closeModalButtonElement = document.querySelector(
+  //   ".modal-dialog-close-button"
+  // );
+  // closeModalButtonElement.addEventListener(
+  //   "click",
+  //   taskAdd.handleClickCloseModal
+  // );
+
   // affiche la liste des tâches
   await displayTasks();
   // debugger;
@@ -64,6 +73,16 @@ async function handleTaskFormSubmit(event) {
       messageElt = document.querySelector(".message.create");
     }
     messageElt.removeAttribute("hidden");
+
+    //* Ajouter un événement de clic à l'alerte pour la fermer manuellement
+    messageElt.addEventListener("click", function () {
+      messageElt.setAttribute("hidden", "true");
+    });
+
+    //* Masquer l'alerte après 5 secondes
+    setTimeout(function () {
+      messageElt.setAttribute("hidden", "true");
+    }, 50000); // Rappel: 1000ms => 1 sec
   } else {
     //? Appel de l'API pour mettre à jour la tâche dont on a récupéré l'id dans l'input type hidden
     //? en argument :
@@ -82,7 +101,16 @@ async function handleTaskFormSubmit(event) {
       console.log(" Mise à jour Effectuée");
     }
     messageElt.removeAttribute("hidden");
-    
+
+    //* Ajouter un événement de clic à l'alerte pour la fermer manuellement
+    messageElt.addEventListener("click", function () {
+      messageElt.setAttribute("hidden", "true");
+    });
+
+    //* Masquer l'alerte après 5 secondes
+    setTimeout(function () {
+      messageElt.setAttribute("hidden", "true");
+    }, 50000); // Rappel: 1000ms => 1 sec
   }
   // on rafraichit notre liste de tâches
   displayTasks();
