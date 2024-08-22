@@ -31,17 +31,20 @@ On y est presque ! Pour finir de rendre notre backend opérationnel et pouvoir c
 Pour que notre back-end puisse communiquer avec notre base de données, il faut lui donner les informations nécessaires pour s'y connecter. Ceci se fait dans le fichier `.env` en renseignant les variables de configuration suivantes *(utilisez les valeurs correspondant à **votre** BDD :wink: )* :
 
 **Le nom de la base de données :**
-```
+
+```bash
 DB_DATABASE=todolist
 ```
 
 **Le nom de l'utilisateur avec lequel se connecter :**
-```
+
+```bash
 DB_USERNAME=todolist
 ```
 
 **Le mot de passe de l'utilisateur :**
-```
+
+```bash
 DB_PASSWORD=todolist
 ```
 
@@ -49,7 +52,7 @@ DB_PASSWORD=todolist
 
 Laravel, pour son fonctionnement interne, a besoin qu'on lui génère une clef de chiffrement unique. Soit, acte : 
 
-```
+```bash
 cd backend
 php artisan key:generate
 ```
@@ -59,17 +62,20 @@ php artisan key:generate
 Maintenant que la base de notre back-end est en place, on peut démarrer le serveur de développement de PHP.
 
 Tout d'abord, il faut se placer dans le répertoire de notre code backend (si ça n'est pas déjà le cas) :
-```
+
+```bash
 cd backend
 ```
 
 Laravel propose un raccourci pour lancer le serveur PHP :
-```
+
+```bash
 php artisan serve
 ```
 
 Si cette commande vous perturbe, vous pouvez toujours utiliser directement la commande suivante, plus proche de ce qu'on a déjà vu les saisons précédentes :
-```
+
+```bash
 php -S localhost:8080 -t frontend
 ```
 

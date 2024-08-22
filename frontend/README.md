@@ -32,14 +32,18 @@ Une seule et même page permet plusieurs modes d'affichage distincts :
      - `<ul class="tasklist">`
      - `<div class="modal-dialog">`
    - puis afficher un message de succès :
+  
      ```html
      <div class="message success">
        la nouvelle tâche a bien été ajoutée
      </div>
      ```
+
    - ou un message d'erreur :
+  
      ```html
      <div class="message danger">
        oops, impossible de sauvegarder la tâche
      </div>
      ```
+  
