@@ -1,4 +1,4 @@
-# TodoList - saison 7
+# TodoList
 
 ## Back-end
 
