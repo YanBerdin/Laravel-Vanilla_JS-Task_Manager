@@ -3,6 +3,19 @@
 > [!NOTE]
 > Todolist est une application web simple de gestion de tâches (to-do list) développée avec un frontend en `JS Vanilla` et un backend avec `Laravel`. Elle permet aux utilisateurs de créer, lire, mettre à jour et supprimer des tâches, ainsi que de les organiser par catégories et tags.
 
+## Table des matières
+
+1. [Vue d'ensemble de l'architecture](#vue-densemble-de-larchitecture)
+2. [Composants principaux](#composants-principaux)
+3. [Fonctionnement et flux principal](#fonctionnement-et-flux-principal)
+4. [Configuration et mise en place](#configuration-et-mise-en-place)
+5. [Design patterns et choix techniques](#design-patterns-et-choix-techniques)
+6. [Extensibilité et personnalisation](#extensibilit%C3%A9-et-personnalisation)
+7. [Exemples d'utilisation](#exemples-dutilisation)
+8. [Business Logic](#business-logic)
+9. [Auteur](#auteur)
+10. [Support](#support)
+
 ## Vue d'ensemble de l'architecture
 
 - **Architecture fullstack** :
@@ -414,7 +427,7 @@ Gestion des erreurs explicites pour améliorer l'expérience utilisateur et la s
 
 ---
 
-## 14. **Auteur**
+## **Auteur**
 
 👤 **Yan Berdin**
 
@@ -424,7 +437,7 @@ Gestion des erreurs explicites pour améliorer l'expérience utilisateur et la s
 
 ---
 
-## 15. **Support**
+## **Support**
 
 Give a ⭐️ if this project helped you!
 
