@@ -1,7 +1,7 @@
-# Documentation Technique – Task Manager
+# `Task Manager`  Laravel/Vanilla JS
 
 > [!NOTE]
-> Todolist est une application web simple de gestion de tâches (to-do list) développée avec un frontend en **JavaScript Vanilla** et un backend en **Laravel**. Elle permet aux utilisateurs de créer, lire, mettre à jour et supprimer des tâches, ainsi que de les organiser par catégories et tags.
+> Todolist est une application web simple de gestion de tâches (to-do list) développée avec un frontend en `JS Vanilla` et un backend avec `Laravel`. Elle permet aux utilisateurs de créer, lire, mettre à jour et supprimer des tâches, ainsi que de les organiser par catégories et tags.
 
 ## Vue d'ensemble de l'architecture
 
